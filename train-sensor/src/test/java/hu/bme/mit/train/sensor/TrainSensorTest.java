@@ -38,6 +38,12 @@ public class TrainSensorTest {
     }
 
     @Test
+    public void nullAbsoluteMarginTest() {
+        trainSensor.overrideSpeedLimit(0);
+        verify(mockTrainUser, times(1)).setAlarmState(false);
+    }
+
+    @Test
     public void overRelativeMarginTest(){
         int speed = (int) (mockTrainController.getReferenceSpeed() * 0.5 - 50);
         trainSensor.overrideSpeedLimit(speed);
